@@ -48,6 +48,7 @@ public class DodgeBall extends GraphicsProgram implements ActionListener {
 		if(numTimes % CHANCE == 0) {
 			addAnEnemy();
 		}
+		moveAllEnemiesOnce();
 		numTimes++;
 	}
 	
@@ -92,6 +93,13 @@ public class DodgeBall extends GraphicsProgram implements ActionListener {
 			ball.move(SPEED, 0);
 		}
 	}
+
+	private void moveAllEnemiesOnce() {
+		enemies.forEach(enemy -> {
+			enemy.move(0, rgen.nextInt(-2, 2));
+		});
+	}
+
 	
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
