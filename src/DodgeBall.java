@@ -75,6 +75,12 @@ public class DodgeBall extends GraphicsProgram implements ActionListener {
 	}
 	
 	private void addAnEnemy() {
+		if (enemies.size() >= MAX_ENEMIES) {
+			movement.stop();
+			removeAll();
+			add(new GLabel("You lost got a score of " + numTimes, 0, WINDOW_HEIGHT/2));
+			return;
+		}
 		GRect e = makeEnemy(rgen.nextInt(0, WINDOW_HEIGHT-SIZE/2));
 		enemies.add(e);
 		text.setLabel("" + enemies.size());
@@ -91,6 +97,12 @@ public class DodgeBall extends GraphicsProgram implements ActionListener {
 	private void moveAllBallsOnce() {
 		for(GOval ball:balls) {
 			ball.move(SPEED, 0);
+			if (getElementAt(ball.getX() + ball.getWidth() + 1, ball.getY() + (ball.getHeight()/2)) instanceof GRect enemy) {
+				remove(enemy);
+				enemies.remove(enemy);
+				text.setLabel("" + enemies.size());
+			}
+
 		}
 	}
 
