@@ -23,7 +23,7 @@ public class MyFirstTimer extends GraphicsProgram implements ActionListener {
 		add(myLabel);
 
 
-		t = new Timer(100, this);
+		t = new Timer(1000, this);
 		t.start();
 
 
@@ -31,10 +31,11 @@ public class MyFirstTimer extends GraphicsProgram implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		myLabel.move(.50, .50);
 		count++;
-		if (count < 10) {
+		if (count <= 10) {
+			myLabel.move(5, 0);
 			System.out.println("Timer called " + count + " times");
+			myLabel.setLabel("times called? " + count);
 		} else {
 			t.stop();
 		}
