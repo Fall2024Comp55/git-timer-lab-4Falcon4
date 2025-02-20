@@ -10,7 +10,7 @@ public class BallLauncher extends GraphicsProgram implements ActionListener {
     public static final int PROGRAM_WIDTH = 800;
     public static final int SIZE = 25;
     public static final int MS = 50;
-    public static final int SPEED = 5;
+    public static final int SPEED = 2;
     private ArrayList<GOval> balls;
 
     public void init() {
